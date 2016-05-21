@@ -5,6 +5,7 @@
 if [ -z "$1" ]
   then
     echo "Usage: $0  [container-name]"
+    echo "  create image from changed container and save to tar file"
     exit;
 fi
 
