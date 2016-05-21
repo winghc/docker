@@ -1,1 +1,1 @@
-rsync -avSHP --delete --exclude "*i386*" --exclude "source" rsync://yum.theforeman.org/yum/releases/1.11/el7 /opt/yum/foreman >> /var/log/rsync/rsync_`date +\%Y\%m\%d`.log 2>&1
+rsync -avSHP --delete --include "el6" --include "el7"  --exclude "*i386*" --exclude "source" rsync://yum.theforeman.org/yum/releases/1.10 /opt/repos/foreman/1.10
