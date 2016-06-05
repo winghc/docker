@@ -1,1 +1,1 @@
-rsync -avSHP --delete --include "*/1.1[0,1]/el[6,7]" --exclude "*i386*" --exclude "source" rsync://yum.theforeman.org/yum/plugins/ /opt/yum/foreman-plugins
+rsync -avSHP --delete --exclude "f21" --exclude "*i386*" --exclude "source" rsync://yum.theforeman.org/yum/plugins/1.11 /opt/repos/foreman-plugins
