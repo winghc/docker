@@ -1,1 +1,3 @@
-rsync -avSHP --delete --include "*/1.1[0,1]/el[6,7]" --exclude "*i386*" --exclude "SRPMS" rsync://yum.puppetlabs.com/yum/el/[6,7] /opt/yum/puppetlabs
+wget -X i386,SRPMS -N -r -np -k -A rpm http://yum.puppetlabs.com/el/7/products/x86_64
+wget -X i386,SRPMS -N -r -np -k -A rpm http://yum.puppetlabs.com/el/6/products/x86_64
+
