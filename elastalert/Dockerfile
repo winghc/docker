@@ -3,9 +3,6 @@ MAINTAINER "H.Chen" <winghc@hotmail.com>
 
 # clone from https://github.com/krizsan/elastalert-docker
 
-# URL from which to download Elastalert.
-ENV ELASTALERT_URL https://github.com/Yelp/elastalert/archive/v0.0.95.tar.gz
-
 # Directory holding configuration for Elastalert and Supervisor.
 ENV CONFIG_DIR /opt/config
 # Elastalert rules directory.
@@ -38,7 +35,7 @@ RUN tar -xvzf configparser-3.3.0r2.tar.gz && \
 WORKDIR /opt
 # Download and unpack Elastalert.
 ##RUN wget ${ELASTALERT_URL} && \
-RUN  tar xvzf *.tar.gz && \
+RUN  tar -xvzf v0.0.95.tar.gz && \
 	mv e* ${ELASTALERT_DIRECTORY_NAME}
 
 WORKDIR ${ELASTALERT_HOME}
