@@ -1,0 +1,6 @@
+FROM citic/python-esalert:0.0.95
+MAINTAINER "H.Chen" <winghc@hotmail.com>
+
+WORKDIR /opt/elastalert-0.0.95
+
+ENTRYPOINT python -m elastalert.elastalert --verbose --rule example_frequency.yaml
