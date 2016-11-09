@@ -1,16 +1,7 @@
-FROM centos:7
+FROM citic/elastalert-base:0.0.95
 MAINTAINER "H.Chen" <winghc@hotmail.com>
 
 # clone from https://github.com/krizsan/elastalert-docker
-
-RUN yum clean all \
-	&& yum install -y wget net-tools curl systemd epel-release \
-	&& yum-config-manager --enable epel \
-	&& rm -rf /etc/localtime \
-	&& ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
-	&& yum -y install python-setuptools python-pip gcc python-devel python-configparser PyYAML libyaml libyaml-devel\
-	&& pip install --upgrade pip \
-	&& pip install python-dateutil setuptools configparser aws-requests-auth texttable croniter -U 
 
 # URL from which to download Elastalert.
 ENV ELASTALERT_URL https://github.com/Yelp/elastalert/archive/v0.0.95.tar.gz
@@ -34,13 +25,9 @@ ENV ELASTICSEARCH_HOST elasticsearch_host
 # Port on above Elasticsearch host. Set in default Elasticsearch configuration file.
 ENV ELASTICSEARCH_PORT 9200
 
-WORKDIR /opt
-
 # Copy the script used to launch the Elastalert when a container is started.
 COPY ./start-elastalert.sh /opt/
-
-WORKDIR /opt/
-COPY ./configparser-3.3.0r2.tar.gz  /opt/ 
+COPY ./*.tar.gz  /opt/ 
 
 WORKDIR /opt/
 
@@ -50,8 +37,8 @@ RUN tar -xvzf configparser-3.3.0r2.tar.gz && \
 
 WORKDIR /opt
 # Download and unpack Elastalert.
-RUN wget ${ELASTALERT_URL} && \
-	tar xvzf *.tar.gz && \
+##RUN wget ${ELASTALERT_URL} && \
+RUN  tar xvzf *.tar.gz && \
 	mv e* ${ELASTALERT_DIRECTORY_NAME}
 
 WORKDIR ${ELASTALERT_HOME}
