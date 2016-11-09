@@ -41,11 +41,12 @@ RUN  tar -xvzf v0.0.95.tar.gz && \
 WORKDIR ${ELASTALERT_HOME}
 
 
-RUN python setup.py install \
-	&& pip install -r requirements.txt && \
+RUN pip install elasticsearch argparse tlslite oauthlib
+RUN python setup.py install 
+RUN pip install -r requirements.txt 
 
 	# Install Supervisor.
-	easy_install supervisor && \
+RUN	easy_install supervisor && \
 
 	# Make the start-script executable.
 	chmod +x /opt/start-elastalert.sh && \
